@@ -5,5 +5,14 @@
     android:layout_height="match_parent"
     tools:context="praseed.p6c.bucketdrops.ActivityMain">
 
+    <include
+        android:id="@+id/toolbar_id"
+        layout="@layout/toolbar" />
+    <ImageView
+        android:layout_below="@+id/toolbar_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/background_img"/>
+    
     <include layout="@layout/emty_drops" />
 </RelativeLayout>

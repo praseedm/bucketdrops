@@ -2,4 +2,15 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- Bucket Drops LOGO-->
+    <dimen name="logo_dimen">192dp</dimen>
+    <dimen name="logo_margin">84dp</dimen>
+    <!-- Button ADD a Drop-->
+    <dimen name="btn_add_corner_rad">4dp</dimen>
+    <dimen name="btn_add_stoke_width">1dp</dimen>
+    <dimen name="btn_add_padding_sides">60dp</dimen>
+    <dimen name="btn_add_dimn_topbottom">8dp</dimen>
+    <dimen name="btn_add_fontsize">28sp</dimen>
+    <dimen name="btn_add_margin">24dp</dimen>
+
 </resources>

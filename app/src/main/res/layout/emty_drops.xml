@@ -5,13 +5,15 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="192dp"
-        android:layout_height="192dp"
+        android:layout_width="@dimen/logo_dimen"
+        android:layout_height="@dimen/logo_dimen"
         android:layout_centerHorizontal="true"
-        android:layout_margin="84dp"
+        android:layout_margin="@dimen/logo_margin"
         android:src="@drawable/logo" />
 
     <Button
+        android:onClick="showDialog"
+        android:background="@drawable/bg_btn_add"
         android:id="@+id/btn_add_drop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,12 +21,12 @@
         android:layout_centerHorizontal="true"
         android:text="@string/add_a_drop"
         android:textAllCaps="false"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:textSize="28sp"
-        android:layout_margin="24dp"
+        android:paddingLeft="@dimen/btn_add_padding_sides"
+        android:paddingRight="@dimen/btn_add_padding_sides"
+        android:paddingTop="@dimen/btn_add_dimn_topbottom"
+        android:paddingBottom="@dimen/btn_add_dimn_topbottom"
+        android:textSize="@dimen/btn_add_fontsize"
+        android:layout_margin="@dimen/btn_add_margin"
         android:textColor="@color/btn_add_color"
         android:fontFamily="sans-serif-thin"/>
 </RelativeLayout>
