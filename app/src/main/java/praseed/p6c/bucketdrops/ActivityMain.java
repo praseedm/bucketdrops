@@ -31,6 +31,11 @@ public class ActivityMain extends AppCompatActivity {
     }
 
     public void showDialog(View view) {
-        Toast.makeText(ActivityMain.this, "clicked", Toast.LENGTH_SHORT).show();
+        showAddDrop();
+    }
+
+    private void showAddDrop() {
+        AddDialog dialog = new AddDialog();
+        dialog.show(getSupportFragmentManager(),"add a drop");
     }
 }
