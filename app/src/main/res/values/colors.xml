@@ -6,4 +6,5 @@
     <color name="yellowAccent">#ffff00</color>
     <color name="blueAccent">#2fe9d4</color>
     <color name="toolbar">#f79607</color>
+    <color name="white">#ffff</color>
 </resources>
