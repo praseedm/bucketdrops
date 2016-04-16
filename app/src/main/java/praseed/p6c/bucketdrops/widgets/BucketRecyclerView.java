@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import praseed.p6c.bucketdrops.extras.MyUtils;
+
 /**
  * Created by praseedm on 4/16/2016.
  */
@@ -55,27 +57,19 @@ public class BucketRecyclerView extends RecyclerView {
         if(getAdapter() != null && !mEmptyViews.isEmpty() && !mNonEmptyViews.isEmpty()){
             if(getAdapter().getItemCount()==0){
                 //show All
-                for(View view : mEmptyViews) {
-                    setVisibility(View.VISIBLE);
-                }
+                MyUtils.showViews(mEmptyViews);
                 //Hide RecyclerView
                 setVisibility(View.GONE);
                 //hideAll
-                for(View view : mNonEmptyViews) {
-                    setVisibility(View.GONE);
-                }
+                MyUtils.hideViews(mNonEmptyViews);
 
             }else {
                 //hide All
-                for(View view : mEmptyViews) {
-                    setVisibility(View.GONE);
-                }
+                MyUtils.hideViews(mEmptyViews);
                 //Show RecyclerView
                 setVisibility(View.VISIBLE);
                 //ShowAll
-                for(View view : mNonEmptyViews) {
-                    setVisibility(View.VISIBLE);
-                }
+               MyUtils.showViews(mNonEmptyViews);
             }
         }
     }
