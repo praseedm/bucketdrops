@@ -14,12 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/background_img"/>
-    <android.support.v7.widget.RecyclerView
+    <praseed.p6c.bucketdrops.widgets.BucketRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerView"
         android:layout_below="@+id/toolbar_id"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
     
-    <include layout="@layout/emty_drops" />
+    <include layout="@layout/emty_drops"
+        android:id="@+id/layout_empty_drops"/>
 </RelativeLayout>

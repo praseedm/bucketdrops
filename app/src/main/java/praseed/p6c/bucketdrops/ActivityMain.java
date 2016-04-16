@@ -18,16 +18,18 @@ import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 import praseed.p6c.bucketdrops.adapters.AdapterDrops;
 import praseed.p6c.bucketdrops.pojo.Drop;
+import praseed.p6c.bucketdrops.widgets.BucketRecyclerView;
 
 public class ActivityMain extends AppCompatActivity {
 
     Toolbar mToolbar;
     ImageView Logo,bgImage;
-    RecyclerView mRecyclerView;
+    BucketRecyclerView mRecyclerView;
     Realm mRealm;
     RealmResults<Drop> results;
     String TAG = "check";
     AdapterDrops mAdapter;
+    View mEnptyView;
 
     private RealmChangeListener mRealmListener = new RealmChangeListener() {
         @Override
@@ -45,9 +47,12 @@ public class ActivityMain extends AppCompatActivity {
         mRealm = Realm.getDefaultInstance();
         results = mRealm.where(Drop.class).findAllAsync();
         mToolbar = (Toolbar) findViewById(R.id.toolbar_id);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mEnptyView = findViewById(R.id.layout_empty_drops);
+        mRecyclerView = (BucketRecyclerView) findViewById(R.id.recyclerView);
 //        LinearLayoutManager manager = new LinearLayoutManager(this);
 //        mRecyclerView.setLayoutManager(manager);
+        mRecyclerView.hideIsEmpty(mToolbar);
+        mRecyclerView.showIsEmpty(mEnptyView);
         mAdapter = new AdapterDrops(this,results);
         mRecyclerView.setAdapter(mAdapter);
 
