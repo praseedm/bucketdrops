@@ -5,6 +5,7 @@
             <solid android:color="@color/drop_expired"/>
         </shape>
     </item>
+
     <item>
         <shape>
             <solid android:color="@color/drop_live"/>

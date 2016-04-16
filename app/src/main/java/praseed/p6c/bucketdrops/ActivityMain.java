@@ -6,32 +6,65 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import io.realm.Realm;
+import io.realm.RealmChangeListener;
+import io.realm.RealmResults;
 import praseed.p6c.bucketdrops.adapters.AdapterDrops;
+import praseed.p6c.bucketdrops.pojo.Drop;
 
 public class ActivityMain extends AppCompatActivity {
 
     Toolbar mToolbar;
     ImageView Logo,bgImage;
     RecyclerView mRecyclerView;
+    Realm mRealm;
+    RealmResults<Drop> results;
+    String TAG = "check";
+    AdapterDrops mAdapter;
+
+    private RealmChangeListener mRealmListener = new RealmChangeListener() {
+        @Override
+        public void onChange() {
+            Log.d(TAG, "onChange: ");
+            mAdapter.update(results);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Logo = (ImageView) findViewById(R.id.logo);
+        mRealm = Realm.getDefaultInstance();
+        results = mRealm.where(Drop.class).findAllAsync();
         mToolbar = (Toolbar) findViewById(R.id.toolbar_id);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 //        LinearLayoutManager manager = new LinearLayoutManager(this);
 //        mRecyclerView.setLayoutManager(manager);
-        mRecyclerView.setAdapter(new AdapterDrops(this));
+        mAdapter = new AdapterDrops(this,results);
+        mRecyclerView.setAdapter(mAdapter);
 
         setSupportActionBar(mToolbar);
         initBGimage();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        results.addChangeListener(mRealmListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        results.removeChangeListener(mRealmListener);
     }
 
     private void initBGimage() {

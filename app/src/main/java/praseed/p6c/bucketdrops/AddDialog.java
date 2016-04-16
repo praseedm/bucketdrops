@@ -63,17 +63,16 @@ public class AddDialog extends DialogFragment {
 
     private void addDrop() {
         String goal = input.getText().toString();
-        long now = System.currentTimeMillis();
-        Drop drop = new Drop(goal,now,0,false);
+        if(goal != null && goal.length()!=0) {
+            long now = System.currentTimeMillis();
+            Drop drop = new Drop(goal, now, 0, false);
 
-        RealmConfiguration realmconfg=new RealmConfiguration.Builder(getActivity()).build();
-        Realm.setDefaultConfiguration(realmconfg);
-
-        Realm realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
-        realm.copyToRealm(drop);
-        realm.commitTransaction();
-        realm.close();
+            Realm realm = Realm.getDefaultInstance();
+            realm.beginTransaction();
+            realm.copyToRealm(drop);
+            realm.commitTransaction();
+            realm.close();
+        }
     }
 
 }
