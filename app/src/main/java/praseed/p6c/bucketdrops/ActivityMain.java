@@ -3,6 +3,7 @@ package praseed.p6c.bucketdrops;
 import android.graphics.Matrix;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,12 +15,14 @@ public class ActivityMain extends AppCompatActivity {
 
     Toolbar mToolbar;
     ImageView Logo,bgImage;
+    RecyclerView mRecyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Logo = (ImageView) findViewById(R.id.logo);
         mToolbar = (Toolbar) findViewById(R.id.toolbar_id);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         setSupportActionBar(mToolbar);
         initBGimage();
     }
@@ -36,6 +39,6 @@ public class ActivityMain extends AppCompatActivity {
 
     private void showAddDrop() {
         AddDialog dialog = new AddDialog();
-        dialog.show(getSupportFragmentManager(),"add a drop");
+        dialog.show(getSupportFragmentManager(),"add a Drop");
     }
 }

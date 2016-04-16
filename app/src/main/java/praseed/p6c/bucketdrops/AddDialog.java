@@ -11,6 +11,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import praseed.p6c.bucketdrops.pojo.Drop;
+
 /**
  * Created by praseedm on 4/15/2016.
  */
@@ -20,12 +24,9 @@ public class AddDialog extends DialogFragment {
     private DatePicker inputDate;
     private Button btnAdd;
 
-    private View.OnClickListener btnClose = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            dismiss();
-        }
-    };
+
+
+
     public AddDialog() {
     }
 
@@ -44,6 +45,35 @@ public class AddDialog extends DialogFragment {
         btnAdd = (Button) view.findViewById(R.id.btn_addit);
 
         close.setOnClickListener(btnClose);
+        btnAdd.setOnClickListener(btnClose);
+    }
+
+    private View.OnClickListener btnClose = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            int id = v.getId();
+            if(id == R.id.btn_addit){
+                addDrop();
+            }
+            dismiss();
+        }
+    };
+    //TODO add custom date picker
+    //TODO add Relam configuration in Application
+
+    private void addDrop() {
+        String goal = input.getText().toString();
+        long now = System.currentTimeMillis();
+        Drop drop = new Drop(goal,now,0,false);
+
+        RealmConfiguration realmconfg=new RealmConfiguration.Builder(getActivity()).build();
+        Realm.setDefaultConfiguration(realmconfg);
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        realm.copyToRealm(drop);
+        realm.commitTransaction();
+        realm.close();
     }
 
 }
