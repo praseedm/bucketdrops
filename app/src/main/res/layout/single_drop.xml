@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="22dp"
+    android:background="@drawable/drop_selector">
+
+    <ImageView
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:src="@drawable/drop_live"
+        android:background="@null"/>
+    <TextView
+        android:id="@+id/goal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="dummy"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/singledrop_padding"
+        android:paddingRight="@dimen/singledrop_padding"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="when"
+        android:id="@+id/when"/>
+</LinearLayout>

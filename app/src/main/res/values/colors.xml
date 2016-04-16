@@ -7,4 +7,6 @@
     <color name="blueAccent">#2fe9d4</color>
     <color name="toolbar">#f79607</color>
     <color name="white">#ffff</color>
+    <color name="drop_live">#66fff799</color>
+    <color name="drop_expired">#33fff799</color>
 </resources>

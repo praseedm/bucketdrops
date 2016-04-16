@@ -16,5 +16,6 @@
     <dimen name="textSize_addadrop">20sp</dimen>
     <dimen name="close_addadrop">18dp</dimen>
     <dimen name="addadrop_etpadding">16dp</dimen>
+    <dimen name="singledrop_padding">22dp</dimen>
 
 </resources>

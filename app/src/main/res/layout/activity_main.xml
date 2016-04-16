@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="praseed.p6c.bucketdrops.ActivityMain">
 
     <include
@@ -17,7 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerView"
-        android:layout_below="@+id/toolbar_id"/>
+        android:layout_below="@+id/toolbar_id"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
     
     <include layout="@layout/emty_drops" />
 </RelativeLayout>
