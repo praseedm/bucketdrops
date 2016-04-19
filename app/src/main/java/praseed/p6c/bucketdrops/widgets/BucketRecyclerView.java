@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.util.Arrays;
@@ -20,6 +21,7 @@ public class BucketRecyclerView extends RecyclerView {
 
     private List<View> mNonEmptyViews = Collections.emptyList();
     private List<View> mEmptyViews = Collections.emptyList();
+    private String TAG="check";
     private AdapterDataObserver mObserver = new AdapterDataObserver() {
         @Override
         public void onChanged() {
@@ -54,7 +56,7 @@ public class BucketRecyclerView extends RecyclerView {
     };
 
     private void toggleViews() {
-        if(getAdapter() != null && !mEmptyViews.isEmpty() && !mNonEmptyViews.isEmpty()){
+        if( getAdapter() != null && !mEmptyViews.isEmpty() && !mNonEmptyViews.isEmpty()){
             if(getAdapter().getItemCount()==0){
                 //show All
                 MyUtils.showViews(mEmptyViews);
@@ -62,14 +64,16 @@ public class BucketRecyclerView extends RecyclerView {
                 setVisibility(View.GONE);
                 //hideAll
                 MyUtils.hideViews(mNonEmptyViews);
+                Log.d(TAG, "toggleViews: empty");
 
             }else {
-                //hide All
-                MyUtils.hideViews(mEmptyViews);
+                Log.d(TAG, "toggleViews: non empty");
+                //ShowAll
+                MyUtils.showViews(mNonEmptyViews);
                 //Show RecyclerView
                 setVisibility(View.VISIBLE);
-                //ShowAll
-               MyUtils.showViews(mNonEmptyViews);
+                //hide All
+                MyUtils.hideViews(mEmptyViews);
             }
         }
     }
@@ -100,6 +104,6 @@ public class BucketRecyclerView extends RecyclerView {
     }
 
     public void showIsEmpty(View ...mEnptyViews) {
-        mNonEmptyViews = Arrays.asList(mEnptyViews);
+        mEmptyViews = Arrays.asList(mEnptyViews);
     }
 }

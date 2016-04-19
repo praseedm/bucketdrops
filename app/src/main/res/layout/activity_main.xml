@@ -6,14 +6,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="praseed.p6c.bucketdrops.ActivityMain">
 
-    <include
-        android:id="@+id/toolbar_id"
-        layout="@layout/toolbar" />
     <ImageView
-        android:layout_below="@+id/toolbar_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/background_img"/>
+
+    <include
+        android:id="@+id/toolbar_id"
+        layout="@layout/toolbar" />
+
     <praseed.p6c.bucketdrops.widgets.BucketRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
